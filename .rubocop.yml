@@ -1,0 +1,39 @@
+require: rubocop-rspec
+
+inherit_gem:
+  rubocop-rails_config: config/rails.yml
+AllCops:
+  TargetRubyVersion: "2.6.5"
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - "spec/**/*"
+
+Metrics/BlockLength:
+  Max: 200
+  Exclude:
+    - "spec/**/*"
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/ModuleLength:
+  Max: 300
+  Exclude:
+    - "spec/**/*"
+
+SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+RSpec/ItBehavesLike:
+  EnforcedStyle: it_behaves_like

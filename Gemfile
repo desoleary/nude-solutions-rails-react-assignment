@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -49,6 +51,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'rubocop', '~> 0.89.1'
+  gem 'rubocop-rspec', '~> 1.42.0'
+  gem 'rubocop-rails_config', '~> 0.12.6'
 end
 
 group :test do
