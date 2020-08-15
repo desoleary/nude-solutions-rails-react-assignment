@@ -2,9 +2,13 @@
   "name": "nude-solutions-rails-react-assignment",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@babel/preset-react": "^7.10.4",
     "@rails/webpacker": "5.1.1",
+    "@types/lodash": "^4.14.159",
+    "antd": "^4.5.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "lodash-es": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -14,7 +18,9 @@
     "prettier": "prettier -l app/javascript/**/*/*.{js,jsx}",
     "prettier:format": "yarn run prettier --write",
     "eslint": "eslint --ext .js --ext .jsx app/javascript --quiet --cache",
-    "eslint:format": "yarn run eslint --fix"
+    "eslint:format": "yarn run eslint --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -33,9 +39,15 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@storybook/addon-actions": "^6.0.7",
+    "@storybook/addon-essentials": "^6.0.7",
+    "@storybook/addon-links": "^6.0.7",
+    "@storybook/react": "^6.0.7",
     "@types/chai": "^4.2.12",
     "@types/enzyme": "^3.10.5",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
     "dirty-chai": "^2.0.1",
@@ -44,6 +56,7 @@
     "enzyme-to-json": "^3.5.0",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-chai-expect": "^2.2.0",
     "eslint-plugin-chai-friendly": "^0.6.0",
     "eslint-plugin-import": "^2.22.0",
@@ -56,8 +69,14 @@
     "expect": "^26.4.0",
     "husky": ">=4",
     "jest": "^26.4.0",
+    "jest-extended": "^0.11.5",
+    "jsdom": "^16.4.0",
+    "jsdom-global": "^3.0.2",
+    "less-loader": "^6.2.0",
     "lint-staged": ">=10",
     "prettier": "^2.0.5",
+    "prettier-eslint": "^11.0.0",
+    "react-is": "^16.13.1",
     "webpack-dev-server": "^3.11.0"
   }
 }

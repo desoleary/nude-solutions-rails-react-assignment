@@ -1,6 +1,23 @@
 import expect from 'expect';
 import chai from './chai-matchers-ext';
 
+// Make sure chai and jasmine ".not" play nice together
+const originalNot = Object.getOwnPropertyDescriptor(
+  chai.Assertion.prototype,
+  'not'
+).get;
+
+Object.defineProperty(chai.Assertion.prototype, 'not', {
+  get() {
+    Object.assign(this, this.assignedNot);
+    return originalNot.apply(this);
+  },
+  set(newNot) {
+    this.assignedNot = newNot;
+    return newNot;
+  }
+});
+
 // Combine both jest and chai matchers on expect
 const jestExpect = expect;
 

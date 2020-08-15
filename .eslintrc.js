@@ -2,15 +2,26 @@ const fs = require('fs');
 const path = require('path');
 
 const prettierOptions = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8')
+  fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8')
 );
 
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb'],
-  plugins: ['react', 'react-hooks', 'jsx-a11y', 'prettier', 'promise', 'jest', 'chai-friendly'],
+  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:jest/recommended'],
+  plugins: [
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+    'prettier',
+    'promise',
+    'jest',
+    'chai-friendly'
+  ],
   parserOptions: {
     ecmaVersion: 9
+  },
+  globals: {
+    beforeAll: 'readable'
   },
   env: {
     browser: true,
@@ -90,7 +101,7 @@ module.exports = {
     'chai-friendly/no-unused-expressions': 2,
 
     // Temporary solution from https://github.com/babel/babel-eslint/issues/681
-    "template-curly-spacing" : "off",
-    "jsx-quotes": 0
+    'template-curly-spacing': 'off',
+    'jsx-quotes': 0
   }
-}
+};
