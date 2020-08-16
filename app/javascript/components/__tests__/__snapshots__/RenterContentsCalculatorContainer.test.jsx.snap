@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RenterContentsCalculatorContainer with shallow rendering compares snapshot 1`] = `
-<RenterContentsCalculatorContainer>
-  Display List of Renter's Contents
-</RenterContentsCalculatorContainer>
-`;

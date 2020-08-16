@@ -1,1 +1,1 @@
-import './setup-dom-and-globals';
+// import './setup-dom-and-globals';

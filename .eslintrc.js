@@ -88,6 +88,7 @@ module.exports = {
     'react/sort-comp': 0,
     'react/jsx-one-expression-per-line': 0,
     'react/no-unescaped-entities': 0,
+    'react/jsx-props-no-spreading': 0,
     'require-yield': 0,
     'no-plusplus': 0,
     'no-unused-expressions': 0,
