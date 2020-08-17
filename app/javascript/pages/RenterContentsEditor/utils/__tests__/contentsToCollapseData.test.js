@@ -52,7 +52,7 @@ describe('contentsToCollapseData', () => {
     subject = contentsToCollapseData([content], { onDelete: handleDeleteFunc });
   });
 
-  it('maps contents into RenterContentsCalculator data props format', () => {
+  it('maps contents into RenterContentsEditor data props format', () => {
     const collapsePanelProps = subject[0];
     expect(collapsePanelProps).to.include({
       id: 'electronics',

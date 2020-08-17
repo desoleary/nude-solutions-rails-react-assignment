@@ -1,1 +1,1 @@
-export { default as RenterContentsCalculator } from './RenterContentsCalculator';
+export { default as RenterContentsEditor } from './RenterContentsEditor';

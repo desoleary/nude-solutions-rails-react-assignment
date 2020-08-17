@@ -1,15 +1,15 @@
-import { arrayOf, shape, number, string, oneOf } from 'prop-types';
+import { arrayOf, shape, number, string, oneOf, oneOfType } from 'prop-types';
 import React from 'react';
 import { usdNumberFormat } from '../../helpers/number-helper';
 import { Collapse } from '../../components';
 import { contentsToCollapseData, calculateTotalAmountFor } from './utils';
 
-const RenterContentsCalculator = (props) => {
+const RenterContentsEditor = (props) => {
   const { contents } = props;
 
   const data = contentsToCollapseData(contents, {
     onDelete: () =>
-      console.log('RenterContentsCalculator: needs to handle delete action...')
+      console.log('RenterContentsEditor: needs to handle delete action...')
   });
 
   const contentTotalValue = calculateTotalAmountFor(contents);
@@ -21,10 +21,10 @@ const RenterContentsCalculator = (props) => {
   return <Collapse data={data} expandAllByDefault footerProps={footerProps} />;
 };
 
-RenterContentsCalculator.propTypes = {
+RenterContentsEditor.propTypes = {
   contents: arrayOf(
     shape({
-      id: string.isRequired,
+      id: oneOfType([string, number]).isRequired,
       description: string.isRequired,
       value: number.isRequired,
       category: oneOf(['Kitchen', 'Electronics', 'Clothing'])
@@ -32,4 +32,4 @@ RenterContentsCalculator.propTypes = {
   )
 };
 
-export default RenterContentsCalculator;
+export default RenterContentsEditor;

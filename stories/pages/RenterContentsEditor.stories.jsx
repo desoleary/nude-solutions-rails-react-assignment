@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenterContentsCalculator } from '../../app/javascript/pages';
+import { RenterContentsEditor } from '../../app/javascript/pages';
 
 const props = {
   contents: [
@@ -20,15 +20,15 @@ const props = {
   ]
 };
 
-const Template = (args) => <RenterContentsCalculator {...args} />;
+const Template = (args) => <RenterContentsEditor {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = { ...props };
 
 export default {
-  title: 'Pages/RenterContentsCalculator',
-  component: RenterContentsCalculator
+  title: 'Pages/RenterContentsEditor',
+  component: RenterContentsEditor
 };
 
 // const data = contentsToCollapseData(contents, { onDelete: handleDelete });
