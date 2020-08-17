@@ -32,7 +32,7 @@ export default (contents, { onDelete = noop } = {}) =>
     .groupBy('category')
     .reduce((memo, categoryContents, category) => {
       const categoryValue = calculateTotalAmountFor(categoryContents);
-      const items = chain(contents)
+      const items = chain(categoryContents)
         .map((content) =>
           mapContentItemIntoCollapseItem({ ...content, onDelete })
         )

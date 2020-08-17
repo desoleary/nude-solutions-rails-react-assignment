@@ -47,13 +47,13 @@ const props = {
 
 const Template = (args) => <Collapse {...args} />;
 
-export const WithKitchenSink = Template.bind();
-
-WithKitchenSink.args = { ...props, footerProps, expandAllByDefault: true };
-
 export const Default = Template.bind();
 
 Default.args = { ...props };
+
+export const WithKitchenSink = Template.bind();
+
+WithKitchenSink.args = { ...props, footerProps, expandAllByDefault: true };
 
 export const WithExpandAllByDefaultSet = Template.bind();
 

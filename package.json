@@ -8,6 +8,7 @@
     "@types/lodash": "^4.14.159",
     "antd": "^4.5.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "localforage": "^1.9.0",
     "lodash-es": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
