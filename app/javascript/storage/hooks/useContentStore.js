@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { chain } from 'lodash-es';
 import useLocalStorage from './useLocalStorage';
 const key = 'renters_content';
+
 const useContentStore = ({ initialEntries = [] }) => {
   const { getItem, setItem } = useLocalStorage({ fallbackValue: [] });
   const [entries, setEntries] = useState([]);
@@ -33,7 +34,24 @@ const useContentStore = ({ initialEntries = [] }) => {
     getItem(key).then(addItem);
   };
 
-  return { addEntry, entries, loading };
+  const removeEntry = (id) => {
+    const removeItem = (currentEntries) => {
+      const nextEntries = chain(currentEntries)
+        .groupBy('id')
+        .omit(id)
+        .values()
+        .map((groupedItems) => groupedItems[0])
+        .value();
+
+      setEntries(nextEntries);
+
+      return setItem({ name: key, value: nextEntries });
+    };
+
+    getItem(key).then(removeItem);
+  };
+
+  return { entries, loading, addEntry, removeEntry };
 };
 
 export default useContentStore;

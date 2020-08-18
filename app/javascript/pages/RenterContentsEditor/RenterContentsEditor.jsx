@@ -10,13 +10,12 @@ import { contents as initialContents } from './seeds';
 
 const RenterContentsEditor = (props) => {
   const { contents } = props;
-  const { entries, addEntry } = useContentStore({
+  const { entries, addEntry, removeEntry } = useContentStore({
     initialEntries: contents || initialContents
   });
 
   const data = contentsToCollapseData(entries, {
-    onDelete: () =>
-      console.log('RenterContentsEditor: needs to handle delete action...')
+    onDelete: (id) => removeEntry(id)
   });
 
   const contentTotalValue = calculateTotalAmountFor(entries);
