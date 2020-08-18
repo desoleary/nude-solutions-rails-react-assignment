@@ -1,22 +1,14 @@
 import { Input as InputAntd } from 'antd';
-import { object, string } from 'prop-types';
+import { string } from 'prop-types';
 import React from 'react';
-import FormItem from './FormItem';
 
 const Input = (props) => {
-  const { label, name, rules, ...inputProps } = props;
-
-  return (
-    <FormItem label={label} name={name} rules={rules}>
-      <InputAntd {...inputProps} placeholder={label} />
-    </FormItem>
-  );
+  const { placeholder, ...inputProps } = props;
+  return <InputAntd {...inputProps} placeholder={placeholder} />;
 };
 
 Input.propTypes = {
-  label: string.isRequired,
-  name: string.isRequired,
-  rules: object
+  placeholder: string
 };
 
 export default Input;

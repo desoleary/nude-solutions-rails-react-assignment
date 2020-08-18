@@ -5,7 +5,7 @@ const handleErrors = (err) => {
   console.log(err);
 };
 
-const useLocalStorage = ({ fallbackValue = undefined } = {}) => {
+const useLocalStorage = (key, { fallbackValue = undefined } = {}) => {
   const getItem = (name, callback = noop) =>
     localForage
       .getItem(name)

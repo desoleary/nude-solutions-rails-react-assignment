@@ -2,29 +2,21 @@ import { Button, Form as FormAntd } from 'antd';
 import { noop } from 'lodash-es';
 import { arrayOf, bool, func, shape, string } from 'prop-types';
 import React from 'react';
-import { Input } from './Field';
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 }
-};
-
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 }
-};
+import Field from './Field';
 
 const Form = (props) => {
-  const { fields, formData, onSubmit, btnLabel } = props;
+  const { fields, formData, onSubmit, submitBtnProps } = props;
+  const { label } = submitBtnProps;
 
   return (
-    <FormAntd {...layout} initialValues={formData} onFinish={onSubmit}>
+    <FormAntd layout='inline' initialValues={formData} onFinish={onSubmit}>
       {fields.map((field) => (
-        <Input {...field} key={field.name} />
+        <Field {...field} key={field.name} />
       ))}
 
-      <FormAntd.Item {...tailLayout}>
+      <FormAntd.Item>
         <Button type='primary' htmlType='submit'>
-          {btnLabel}
+          {label}
         </Button>
       </FormAntd.Item>
     </FormAntd>
@@ -35,19 +27,24 @@ Form.defaultProps = {
   fields: [],
   formData: {},
   onSubmit: noop,
-  btnLabel: 'Submit'
+  submitBtnProps: {
+    label: 'Submit'
+  }
 };
 
 Form.propTypes = {
   fields: arrayOf(
     shape({
       name: string.isRequired,
-      label: string.isRequired,
+      label: string,
       required: bool
     })
   ),
   formData: shape({}),
-  btnLabel: string,
+  formProps: shape({ layout: string }),
+  submitBtnProps: shape({
+    label: string
+  }),
   onSubmit: func
 };
 

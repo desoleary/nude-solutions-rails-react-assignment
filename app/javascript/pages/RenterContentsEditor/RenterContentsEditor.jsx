@@ -1,24 +1,40 @@
 import { arrayOf, shape, number, string, oneOf, oneOfType } from 'prop-types';
 import React from 'react';
+import { CATEGORIES } from '../../constants';
+import { AddContentForm } from './components';
+import { useContentStore } from '../../storage';
 import { usdNumberFormat } from '../../helpers/number-helper';
 import { Collapse } from '../../components';
 import { contentsToCollapseData, calculateTotalAmountFor } from './utils';
+import { contents as initialContents } from './seeds';
 
 const RenterContentsEditor = (props) => {
   const { contents } = props;
+  const { entries, addEntry } = useContentStore({
+    initialEntries: contents || initialContents
+  });
 
-  const data = contentsToCollapseData(contents, {
+  const data = contentsToCollapseData(entries, {
     onDelete: () =>
       console.log('RenterContentsEditor: needs to handle delete action...')
   });
 
-  const contentTotalValue = calculateTotalAmountFor(contents);
+  const contentTotalValue = calculateTotalAmountFor(entries);
   const footerProps = {
     header: `TOTAL`,
     extra: usdNumberFormat(contentTotalValue)
   };
 
-  return <Collapse data={data} expandAllByDefault footerProps={footerProps} />;
+  const handleAddEntry = (formData) => {
+    addEntry(formData);
+  };
+
+  return (
+    <>
+      <Collapse data={data} expandAllByDefault footerProps={footerProps} />
+      <AddContentForm onAdd={handleAddEntry} />
+    </>
+  );
 };
 
 RenterContentsEditor.propTypes = {
@@ -27,7 +43,7 @@ RenterContentsEditor.propTypes = {
       id: oneOfType([string, number]).isRequired,
       description: string.isRequired,
       value: number.isRequired,
-      category: oneOf(['Kitchen', 'Electronics', 'Clothing'])
+      category: oneOf(CATEGORIES)
     })
   )
 };
